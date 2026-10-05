@@ -1,0 +1,14 @@
+name: Unzip
+on: workflow_dispatch
+jobs:
+  unzip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: unzip -o MERN_LAB.zip && rm MERN_LAB.zip && rm -rf .github/workflows/unzip.yml
+      - run: |
+          git config user.name "mobile"
+          git config user.email "mobile@github.com"
+          git add .
+          git commit -m "Unzipped"
+          git push
